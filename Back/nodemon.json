@@ -1,7 +1,0 @@
-{
-    "watch": ["./"],
-    "ignore": ["node_modules", ".git"],
-    "events": {
-        "restart": "npm run format:fix && npm run lint:fix"
-    }
-}
