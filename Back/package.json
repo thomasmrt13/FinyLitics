@@ -1,31 +1,32 @@
 {
-    "name": "back-finylitics",
-    "version": "1.0.0",
-    "description": "",
-    "license": "ISC",
-    "author": "thomasmrt13",
-    "type": "module",
-    "main": "app.js",
-    "scripts": {
-        "start": "nodemon --experimental-specifier-resolution=node app.js"
-    },
-    "dependencies": {
-        "@prisma/client": "^6.14.0",
-        "cors": "^2.8.5",
-        "dotenv": "^17.2.1",
-        "express": "^5.1.0",
-        "nodemon": "^3.1.10",
-        "prisma": "^6.14.0"
-    },
-    "devDependencies": {
-        "@eslint/eslintrc": "^3.3.1",
-        "@eslint/js": "^9.33.0",
-        "eslint": "^9.33.0",
-        "eslint-config-prettier": "^10.1.8",
-        "globals": "^16.3.0",
-        "prettier": "^3.6.2"
-    },
-    "prisma": {
-        "schema": "db/schema.prisma"
-    }
+  "name": "back-finylitics",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "thomasmrt13",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.14.0",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10",
+    "prisma": "^6.14.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.33.0",
+    "eslint": "^9.33.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^16.3.0",
+    "prettier": "^3.6.2"
+  },
+  "prisma": {
+    "schema": "db/schema.prisma"
+  }
 }
