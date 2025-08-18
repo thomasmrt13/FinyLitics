@@ -1,7 +1,7 @@
 import express from "express";
 import "dotenv/config";
 import cors from "cors";
-import { userRoutes } from "./routes/index.js";
+import { userRoutes, authRoutes } from "./routes/index.js";
 
 const server = express();
 
@@ -24,6 +24,7 @@ server.get("/", (req, res) => {
 });
 
 server.use("/user", userRoutes);
+server.use("/auth", authRoutes);
 
 server.listen(process.env.SERVER_PORT);
 
