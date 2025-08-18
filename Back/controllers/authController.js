@@ -15,7 +15,7 @@ export default {
 
             const existingUser = await prisma.user.findUnique({ where: { email } });
             if (existingUser) {
-                return res.status(400).json({ message: "Email déjà utilisé" });
+                return res.status(400).json({ message: "Email already used" });
             }
 
             const hashedPassword = await bcrypt.hash(password, 10);
@@ -45,14 +45,14 @@ export default {
 
             if (!user) {
                 return res.status(400).json({
-                    message: "L'utilisateur n'existe pas"
+                    message: "The user doesn't exist"
                 })
             }
 
             const isValid = await bcrypt.compare(password, user.password);
             if (!isValid) {
                 return res.status(400).json({
-                    message: "Mot de passe incorrect"
+                    message: "Password incorrect"
                 })
             }
 
@@ -63,7 +63,7 @@ export default {
             );
 
             res.json({
-                message: "Connexion réussie",
+                message: "Connected successfully",
                 token
             });
         } catch (error) {

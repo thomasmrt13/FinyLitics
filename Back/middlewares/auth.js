@@ -7,7 +7,7 @@ export const requireAuth = (req, res, next) => {
         
         if(!token) {
             return res.status(401).json({
-                message: "Accès refusé - Token d'authentification requis"
+                message: "Access denied - Authentication token required"
             });
         }
         
@@ -21,12 +21,12 @@ export const requireAuth = (req, res, next) => {
     } catch (error) {
         if (error.name === 'TokenExpiredError') {
             return res.status(401).json({
-                message: "Token expiré - Veuillez vous reconnecter"
+                message: "Token expired - Please log in again"
             })
         }
         
         return res.status(401).json({
-            message: "Token invalide - Authentification echouée"
+            message: "Invalid token - Authentication failed"
         })
     }
 }
