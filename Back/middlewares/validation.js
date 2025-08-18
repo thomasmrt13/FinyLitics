@@ -3,27 +3,27 @@ export const validateRegister = (req, res, next) => {
 
     if (!email || !name || !password) {
         return res.status(400).json({
-            message: "Tous les champs sont requis"
+            message: "All fields are required"
         });
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
         return res.status(400).json({
-            message: "Format d'email invalide"
+            message: "Invalid email format"
         })
     }
 
     if (name.trim().length < 2) {
         return res.status(400).json({
-            message: "Le nom doit contenir au moins 2 caractères"
+            message: "The name must contain at least 2 characters"
         });
     }
 
 
     if (password.length < 6) {
         return res.status(400).json({
-            message: "Le mot de passe doit contenir au moins 6 caractères"
+            message: "The password must contain at least 6 characters"
         })
     }
 
@@ -35,7 +35,7 @@ export const validateLogin = (req, res, next) => {
 
     if (!email || !password) {
         return res.status(400).json({
-            message: "Email et mot de passe requis"
+            message: "Email and password required"
         });
     }
 
