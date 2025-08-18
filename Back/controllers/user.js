@@ -47,7 +47,14 @@ export default {
     const { email, name, password } = req.body;
 
     try {
+
+      const existingUser = await prisma.user.findUnique({ where: { email } });
+      if (existingUser) {
+        return res.status(400).json({ message: "Email déjà utilisé" });
+      }
+
       const hashedPassword = await bcrypt.hash(password, 10);
+
       const user = await User.create({
         data: {
           email: email,
