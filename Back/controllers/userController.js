@@ -11,7 +11,7 @@ const {
 } = prisma;
 
 export default {
-  async getAll(req, res) {
+  async getAllUsers(req, res) {
     try {
       const users = await User.findMany();
       res.status(200).json(users);
@@ -22,7 +22,7 @@ export default {
     }
   },
 
-  async get(req, res) {
+  async getUserById(req, res) {
     const { id } = req.params;
 
     try {
@@ -43,35 +43,7 @@ export default {
     }
   },
 
-  async create(req, res) {
-    const { email, name, password } = req.body;
-
-    try {
-
-      const existingUser = await prisma.user.findUnique({ where: { email } });
-      if (existingUser) {
-        return res.status(400).json({ message: "Email déjà utilisé" });
-      }
-
-      const hashedPassword = await bcrypt.hash(password, 10);
-
-      const user = await User.create({
-        data: {
-          email: email,
-          name: name,
-          password: hashedPassword,
-        },
-      });
-      const { password: _, ...userWithoutPassword } = user;
-      res.status(201).json(userWithoutPassword);
-    } catch (error) {
-      res.status(500).json({
-        message: error.message,
-      });
-    }
-  },
-
-  async update(req, res) {
+  async updateUser(req, res) {
     const { id } = req.params;
     const { name } = req.body;
 
@@ -93,7 +65,7 @@ export default {
     }
   },
 
-  async delete(req, res) {
+  async deleteUser(req, res) {
     const { id } = req.params;
 
     try {
