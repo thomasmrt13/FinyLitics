@@ -33,5 +33,11 @@ export function useAuth () {
 
     }
 
-    return { user, loading, login, register };
+    const logout = () => {
+        localStorage.removeItem("token");
+        setUser(null);
+        router.push("/auth");
+      };
+
+    return { user, loading, login, register, logout };
 }
