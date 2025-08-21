@@ -64,7 +64,7 @@ export default {
 
             res.json({
                 message: "Connected successfully",
-                token
+                token,
             });
         } catch (error) {
             res.status(500).json({ message: error.message })
