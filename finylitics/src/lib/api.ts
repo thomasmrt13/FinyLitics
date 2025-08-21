@@ -30,7 +30,6 @@ export async function apiFetch (
             data = await res.text();
         }
         
-        // Si la réponse n'est pas OK, lancer une erreur avec le message du backend
         if (!res.ok) {
             const errorMessage = data?.message || data?.error || `Erreur ${res.status}: ${res.statusText}`;
             const error = new Error(errorMessage);
@@ -41,12 +40,10 @@ export async function apiFetch (
         
         return data;
     } catch (error) {
-        // Si c'est déjà une erreur qu'on a créée, la relancer
         if (error instanceof Error && (error as any).status) {
             throw error;
         }
         
-        // Sinon, c'est une erreur réseau ou autre
         console.error("Erreur API:", error);
         throw new Error("Erreur de connexion au serveur");
     }
