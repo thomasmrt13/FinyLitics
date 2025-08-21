@@ -2,8 +2,15 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { apiFetch } from "@/lib/api";
 
+interface User {
+    id: number;
+    email: string;
+    name: string;
+    createdAt: string;
+  }
+
 export function useAuth () {
-    const [user,setUser] = useState<any>(null);
+    const [user,setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
     const router = useRouter();
 
@@ -27,7 +34,6 @@ export function useAuth () {
                 password: password
             })
         });
-        console.log(data);
         setUser(data.user);
         router.push("/dashboard");
 
@@ -39,5 +45,5 @@ export function useAuth () {
         router.push("/auth");
       };
 
-    return { user, loading, login, register, logout };
+    return { user, loading, login, register, logout, isAuthenticated: !!user };
 }

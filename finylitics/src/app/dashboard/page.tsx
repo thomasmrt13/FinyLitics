@@ -1,5 +1,7 @@
 export default function DashBoard() {
     return (
-        <div>DashBoard</div>
+        <div className="p-8">
+            DashBoard
+        </div>
     )
 }
