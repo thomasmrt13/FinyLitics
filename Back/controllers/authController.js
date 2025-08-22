@@ -26,8 +26,18 @@ export default {
                     password: hashedPassword,
                 },
             });
+
+            const token = jwt.sign(
+                { userId: user.id },
+                process.env.JWT_SECRET,
+                { expiresIn: "1h" }
+            );
+
             const { password: _, ...userWithoutPassord } = user;
-            res.status(201).json(userWithoutPassord);
+            res.status(201).json({ 
+                user: userWithoutPassord,
+                token: token
+             });
         } catch (error) {
             res.status(500).json({
                 message: error.message,
@@ -62,8 +72,10 @@ export default {
                 { expiresIn: "1h" }
             );
 
+            const { password: _, ...userWithoutPassord } = user;
             res.json({
                 message: "Connected successfully",
+                user: userWithoutPassord,
                 token,
             });
         } catch (error) {
