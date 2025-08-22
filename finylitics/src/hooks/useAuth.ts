@@ -35,6 +35,7 @@ export function useAuth () {
             })
         });
         setUser(data.user);
+        localStorage.setItem("token", data.token);
         router.push("/dashboard");
 
     }
